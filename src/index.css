@@ -69,3 +69,23 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-gold);
 }
+
+
+html {
+  scrollbar-gutter: stable;
+}
+
+
+/* استهداف حاوية السلايدر وأي عنصر داخله */
+.infinite-slider-container, 
+.slider-track, 
+.product-offer-card, 
+.image-wrapper {
+    cursor: none !important; /* إخفاء الماوس تماماً */
+}
+
+/* منع المتصفح من تغيير الماوس عند الضغط والسحب */
+.infinite-slider-container:active, 
+.slider-track:active {
+    cursor: none !important;
+}

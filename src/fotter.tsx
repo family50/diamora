@@ -1,5 +1,5 @@
 import "./fotter.css";
-
+import LuxeMedia from './LuxeMedia';
 // إضافة الـ Interface لاستلام اللغة
 interface FooterProps {
     lang: string;
@@ -11,18 +11,55 @@ export default function Fotter({ lang }: FooterProps) {
             <div className="footer-container">
                 {/* العمود الأول: الهوية والوصف */}
                 <div className="footer-section brand-info">
-                    <img src="/logo.png" alt="Diamore Logo" className="footer-logo" />
+                  <LuxeMedia 
+   
+   
+    className="footer-logo-wrapper"
+>
+    <img 
+        src="/logo.png" 
+        alt="Diamore Logo" 
+        className="footer-logo" 
+       
+    />
+</LuxeMedia>
                     <p className="footer-tagline">
-                        {lang === 'en' 
-                            ? "Crafting timeless Swiss chocolate masterpieces since 1924. Indulge in the symphony of pure cocoa and Alpine heritage."
-                            : "نصنع تحف الشوكولاتة السويسرية الخالدة منذ عام 1924. استمتع بسيمفونية الكاكاو النقي والتراث الألبي العريق."
-                        }
+                    {lang === 'en' 
+    ? "At Diamore, we believe chocolate is more than just a treat; it is a feeling, a comfort, and a connection. From our kitchen to your heart, every piece is crafted with love and a touch of magic."
+    : "في ديامور، نؤمن بأن الشوكولاتة ليست مجرد حلوى، بل هي مشاعر وراحة وتواصل. من مطبخنا إلى قلبك، كل قطعة مصنوعة بحب ولمسة سحرية."
+}
                     </p>
                     <div className="social-links">
-                        <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="TikTok"><i className="fab fa-tiktok"></i></a>
-                    </div>
+    <a 
+      href="https://www.facebook.com/diamorechocolate/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      aria-label="Facebook"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <i className="fab fa-facebook-f"></i>
+    </a>
+    
+    <a 
+      href="https://www.instagram.com/diamorechocolate/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      aria-label="Instagram"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <i className="fab fa-instagram"></i>
+    </a>
+    
+    <a 
+      href="https://www.tiktok.com/@diamorechocolate" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      aria-label="TikTok"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <i className="fab fa-tiktok"></i>
+    </a>
+</div>
                 </div>
 
                 {/* العمود الثاني: الروابط السريعة */}
@@ -41,7 +78,9 @@ export default function Fotter({ lang }: FooterProps) {
                     <div className="contact-details">
                         <p>
                             <i className="fas fa-map-marker-alt"></i> 
-                            {lang === 'en' ? ' Exclusive Boutique: Zurich, Switzerland' : ' بوتيك حصري: زيورخ، سويسرا'}
+                         {lang === 'en' 
+    ? 'Digital Boutique: Based in Cairo, Egypt' 
+    : 'بوتيك رقمي: من قلب القاهرة، مصر'}
                         </p>
                         <p><i className="fas fa-envelope"></i> concierge@diamore.com</p>
                     </div>

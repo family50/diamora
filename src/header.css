@@ -476,3 +476,43 @@
     }
 
 }
+
+
+
+/* تمييز الرابط النشط (Active Link) */
+.nav-links a.active,
+.corporate-link.active,
+.mobile-nav-links a.active {
+    color: var(--accent-gold) !important;
+}
+
+/* إضافة النقطة الذهبية تحت الرابط النشط في الديسكتوب أيضاً لزيادة الفخامة */
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--accent-gold);
+}
+
+/* في الموبايل: النقطة النشطة دائماً */
+.mobile-nav-links a.active::after {
+    transform: scale(1) !important;
+}
+
+/* تعديل للهيدر في الصفحات الأخرى */
+.main-header.always-scrolled {
+    /* نضمن أن الخلفية داكنة دائماً في غير الرئيسية لسهولة القراءة */
+    background-color: var(--primary-purple) !important;
+    height: 80px;
+    border-bottom: 1px solid var(--accent-gold);
+}
