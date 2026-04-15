@@ -1,0 +1,1833 @@
+/* الحاوية الأساسية للهوم */
+.home-container {
+    width: 100%;
+}
+
+
+
+
+
+
+/* السيكشن الرئيسي */
+.hero-video-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--primary-purple); /* توحيد اللون مع السيكشن التالي */
+}
+
+/* الفيديو مع زوم احترافي */
+.hero-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 105vw; /* زوم عرضي بسيط */
+    height: 105vh; /* زوم طولي بسيط */
+    object-fit: cover;
+    object-position: center;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    /* تأثير نعومة خفيف جداً على الفيديو لزيادة الفخامة */
+    filter: brightness(0.9) contrast(1.1); 
+}
+
+/* الطبقة السحرية (الظلال والدمج) */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    /* 1. الظل الداخلي المزدوج الذي طلبته لإخفاء العلامة من الأسفل */
+    /* قمنا بعكس القيم لتصبح موجبة في الـ Y لتركز الظل في الأسفل */
+box-shadow: 
+        /* 1. ظل علوي (نفسه لضمان النعومة) */
+        inset 0 40px 60px -30px rgba(255, 255, 255, 0.1), 
+
+        /* 2. التوهج السفلي باستخدام اللون الفاتح بشفافية 40% (نفس القوة) */
+        inset 0 -100px 120px -40px rgba(248, 246, 251, 0.4), 
+
+        /* 3. دمج لوني مع اللون الفاتح الأساسي */
+        inset 0 -50px 80px -20px var(--light-purple);
+
+    /* التدرج اللوني المدمج ليغطي العلامة المائية باللون الفاتح */
+    background: linear-gradient(
+        to bottom,
+        rgba(248, 246, 251, 0.2) 0%,      /* خفيف جداً من الأعلى */
+        transparent 50%,                  /* شفاف للمنتصف */
+        var(--light-purple) 95%,          /* لون البراند يغطي العلامة المائية */
+        var(--light-purple) 100%
+    );
+}
+
+/* إضافة طبقة Grain خفيفة (اختياري للفخامة) */
+.video-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity: 0.03; /* تعطي ملمس سينمائي للفيديو */
+}
+
+/* المحتوى النصي (أعلى طبقة والتمركز في المنتصف) */
+.video-content-wrapper {
+    position: absolute; /* تغيير من relative إلى absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* سحب العنصر لمنتصفه تماماً */
+    z-index: 10; /* أعلى من الفيديو والـ overlay */
+    text-align: center;
+    width: 100%; /* لضمان التوسط العرضي */
+    pointer-events: none; /* لكي لا يعيق الضغط على الفيديو إذا كان هناك تفاعل */
+    
+}
+
+.video-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 10vw, 7rem); /* تكبير بسيط للفخامة */
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin: 0;
+    text-transform: uppercase;
+   
+     background: linear-gradient(
+        to right, 
+        #c5a059 0%, 
+        #fff 25%, 
+        #c5a059 50%, 
+        #fff 75%, 
+        #c5a059 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+    display: block; /* لضمان نزولها في سطر جديد إذا لزم الأمر */
+}
+
+.gold-text-shimmer {
+    background: linear-gradient(
+        to right, 
+        #c5a059 0%, 
+        #fff 25%, 
+        #c5a059 50%, 
+        #fff 75%, 
+        #c5a059 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+    display: block; /* لضمان نزولها في سطر جديد إذا لزم الأمر */
+    
+   
+}
+
+.video-subtext {
+    font-size: 1.2rem;
+    letter-spacing: 10px; /* تباعد أكبر للحروف يعطي شعور الـ Premium */
+    text-transform: uppercase;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    font-weight: 300;
+     width: 80%;
+    margin: 0 auto;
+}
+
+/* جزء الخط الذهبي تحت النص */
+.explore-badge {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.badge-line {
+    width: 1px;
+    height: 80px; /* طول الخط العمودي */
+    background: linear-gradient(to bottom, var(--accent-gold), transparent);
+}
+
+.badge-text {
+    font-size: 0.8rem;
+    letter-spacing: 6px;
+    color: var(--accent-gold);
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* الأنميشن */
+@keyframes fadeInContent {
+    from { opacity: 0; transform: translate(-50%, -45%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+@keyframes shimmer {
+    to { background-position: 200% center; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.diamore-brand-reveal {
+    background-color: var(--light-purple);
+    padding: 60px 0; 
+    position: relative;
+    color: var(--primary-purple);
+    text-align: center;
+
+    /* --- الشادو الداخلي من الأعلى (Inset) --- */
+    /* التعديل هنا: أضفنا كلمة inset وجعلنا القيمة موجبة 80px ليدفع الظل للداخل من الأعلى */
+  
+    
+    /* لضمان دمج مثالي مع الفيديو الذي فوقه */
+    margin-top: -1px; 
+}
+
+/* توقيع البراند (الأيقونة والخط) */
+.brand-signature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.lotus-icon {
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+    animation: float 4s ease-in-out infinite;
+}
+
+/* الخط الذهبي العمودي */
+.vertical-gold-line {
+    width: 1px;
+    height: 60px; /* طول الخط */
+    background: linear-gradient(to bottom, var(--accent-gold), transparent);
+    opacity: 0.8;
+}
+
+.brand-tagline {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 8px; /* تباعد كبير للفخامة */
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.brand-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem); /* خط كبير وفخم */
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.gold-gradient-text {
+    background: linear-gradient(to right, #D4AF37 0%, #F8F6FB 50%, #D4AF37 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+}
+
+.brand-description {
+    font-family: var(--font-body);
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.3rem; /* تكبير الخط الوصفي */
+    line-height: 1.6;
+    color: var(--primary-purple);
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* أنميشن اللمعان الهادئ */
+@keyframes shimmer {
+    to { background-position: 200% center; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- قسم العروض الحصرية (Exclusive Offers Section) --- */
+.exclusive-offers-section {
+    padding: 100px 0; /* مساحة داخلية من الأعلى والأسفل */
+    background-color: var(--light-purple); /* لون الخلفية الأرجواني الفاتح */
+    overflow: hidden; /* إخفاء أي محتوى يخرج عن حدود السيكشن (ضروري للسلايدر) */
+}
+
+/* --- رأس القسم (العنوان والتحكم) --- */
+.section-header {
+    display: flex; /* ترتيب العناصر بشكل أفقي */
+    justify-content: space-between; /* توزيع المساحة بين العنوان وأزرار التحكم */
+    align-items: flex-end; /* محاذاة العناصر من الأسفل */
+    max-width: 85%; /* أقصى عرض لمحتوى الرأس */
+    margin: 0 auto 50px; /* توسيط الرأس وإضافة مسافة أسفله */
+    padding: 0 20px; /* مسافة داخلية جانبية للموبايل */
+
+}
+
+.gold-label {
+    color: var(--accent-gold); /* اللون الذهبي الخاص بالبراند */
+    font-family: var(--font-heading); /* خط العناوين */
+    letter-spacing: 4px; /* توزيع الحروف لزيادة الفخامة */
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.main-heading {
+    color: var(--primary-purple); /* اللون الأرجواني الأساسي */
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+}
+
+/* --- أزرار التحكم في السلايدر (Scroll Buttons) --- */
+.scroll-controls {
+    display: flex;
+    gap: 15px; /* مسافة بين الزرين */
+}
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid var(--accent-gold); /* إطار ذهبي رفيع */
+    color: var(--accent-gold);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* جعل الزر دائري */
+    cursor: pointer;
+    transition: var(--transition); /* حركة ناعمة عند التفاعل */
+    
+}
+
+.nav-btn:hover {
+    background: var(--accent-gold); /* تحول الخلفية للذهبي عند التمرير */
+    color: white; /* تحول السهم للون الأبيض */
+}
+
+
+
+
+
+
+
+
+/* --- حاوية السلايدر الكبرى (التي تتحكم في الرؤية) --- */
+.infinite-slider-container {
+    width: 100%;
+    cursor: grab;
+    position: relative;
+    
+    /* زيادة قوة الـ Mask بجعل مساحة الأسود (الظهور الكامل) أضيق في المنتصف */
+    /* التدرج هنا يبدأ التلاشي من 0% حتى 20%، مما يعطي بلور أنعم وأطول */
+    -webkit-mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        black 20%, 
+        black 80%, 
+        transparent 100%
+    );
+    mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        black 20%, 
+        black 80%, 
+        transparent 100%
+    );
+}
+
+/* 2. إضافة طبقة شادو داخلي عميق (مضاعف) لإعطاء فخامة مطلقة */
+.infinite-slider-container::before,
+.infinite-slider-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 25%; /* زيادة العرض لتعميق الظل الجانبي */
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* شادو الطرف الأيسر - تم استخدام تدرج مركب لزيادة الكثافة عند الحافة */
+.infinite-slider-container::before {
+    left: 0;
+    background: linear-gradient(to right, 
+        var(--light-purple) 0%, 
+        var(--light-purple) 30%, /* تثبيت اللون في البداية لزيادة القوة */
+        transparent 100%
+    );
+}
+
+/* شادو الطرف الأيمن - تم استخدام تدرج مركب لزيادة الكثافة عند الحافة */
+.infinite-slider-container::after {
+    right: 0;
+    background: linear-gradient(to left, 
+        var(--light-purple) 0%, 
+        var(--light-purple) 30%, /* تثبيت اللون في البداية لزيادة القوة */
+        transparent 100%
+    );
+}
+
+/* --- مسار السلايدر (Slider Track) --- */
+.slider-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    /* زيادة الـ padding الجانبي لضمان عدم ظهور أول كارت مقطوع بشكل حاد */
+    padding: 0 10%; 
+}
+
+
+
+/* --- تصميم كارت المنتج الفاخر (Luxury Card Design) --- */
+/* --- تصميم كارت المنتج (Quiet Luxury Design) --- */
+.product-offer-card {
+    width: 310px; /* عرض متناسق أكثر */
+    text-align: center;
+    position: relative;
+    padding: 40px 25px; /* مسافات واسعة للتنفس (Breathability) */
+    background: transparent; /* نبدأ بخلفية شفافة تماماً للبساطة */
+    border-radius: 0px; /* حواف حادة أو شبه حادة تعطي انطباعاً رسمياً وأفخم */
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    margin: 15px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1); /* خط سفلي ذهبي خفيف جداً بدل الإطار الكامل */
+}
+
+/* تأثير الـ Hover: الفخامة الهادئة */
+.product-offer-card:hover {
+    background: rgba(255, 255, 255, 0.02); /* ظهور خجول جداً للخلفية */
+    transform: translateY(-5px); /* حركة صعود طفيفة وراقية */
+    border-bottom-color: rgba(212, 175, 55, 0.8); /* تحول الخط السفلي لذهب صريح */
+}
+
+
+/* --- حاوية الصور الماركة --- */
+/* --- حاوية الصور الماركة --- */
+.image-wrapper {
+    position: relative;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* لإعطاء بعد ثالث للصور */
+    overflow: visible; /* لضمان عدم قطع الظل أو المنتج أثناء الحركة */
+}
+
+/* --- بناء الظل السحري باستخدام ::after (بدلاً من ديف مخصوص) --- */
+/* --- حاوية الصور الماركة --- */
+.image-wrapper {
+    position: relative;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* يعطي عمقاً بصرياً للصور */
+    overflow: visible; /* لضمان عدم قطع الظل أو المنتج أثناء الحركة */
+}
+
+/* --- الظل الملكي المتفاعل (Luxury Identity Shadow) --- */
+.image-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 25px; /* رفعناه قليلاً لزيادة مساحة التنفس البصري */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px; /* عرض الظل */
+    height: 16px; /* ارتفاع الظل البيضاوي */
+    
+    /* دمج الموف العميق من الهوية ليعطي ظلاً واقعياً يتفاعل مع البراند */
+    background: radial-gradient(ellipse at center, var(--primary-purple) 0%, transparent 80%);
+    
+    border-radius: 50%;
+    
+    /* توهج ناعم يدمج الظل مع الخلفية الفاتحة */
+    box-shadow: 0 5px 15px 2px rgb(74, 21, 66); 
+    
+    z-index: 1; /* خلف الصور */
+    filter: blur(5px); 
+    
+    /* ربط أنيميشن النبض ليتزامن مع حركة المنتج */
+    animation: shadowPulse 3s infinite ease-in-out;
+    pointer-events: none;
+}
+
+/* --- تنسيق الصور النهائي --- */
+.image-wrapper img {
+    position: absolute; 
+    width: 240px; /* حجم ثابت ومحكم للصور */
+    max-width: 90%; 
+    height: auto;
+    object-fit: contain;
+    z-index: 5; /* فوق طبقة الظل */
+    
+    /* ظل واقعي للمنتج نفسه بلون الهوية */
+    filter: drop-shadow(0 20px 30px rgba(74, 21, 66, 0.25));
+    
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* أنيميشن الطفو المستمر */
+    animation: floatingProduct 3s infinite ease-in-out;
+}
+
+/* --- أنيميشن طفو المنتج (فوق وتحت) --- */
+@keyframes floatingProduct {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-18px); /* يرتفع بنعومة للأعلى */
+    }
+}
+
+/* --- أنيميشن نبض الظل (يتفاعل مع فيزياء الارتفاع) --- */
+@keyframes shadowPulse {
+    0%, 100% { 
+        /* عندما يكون المنتج قريباً: الظل قوي، عريض، ومحدد */
+        transform: translateX(-50%) scale(1.15); 
+        opacity: 0.6; 
+        filter: blur(5px);
+    }
+    50% { 
+        /* عندما يرتفع المنتج: الظل يصغر، يبهت، ويتشتت (Blurry) */
+        transform: translateX(-50%) scale(1); 
+        opacity: 0.15; 
+        filter: blur(8px); 
+    }
+}
+
+/* --- التفاعلات عند الـ Hover --- */
+
+/* إيقاف حركات الطفو للتركيز على أنيميشن تبديل الصور */
+.product-offer-card:hover .image-wrapper img {
+    animation-play-state: paused;
+}
+
+.product-offer-card:hover .image-wrapper::after {
+    animation-play-state: paused;
+    opacity: 0.3; /* تهدئة الظل أثناء المعاينة */
+}
+
+.product-offer-card:hover .img-primary {
+    opacity: 0;
+    transform: scale(1.1) translateY(-30px) rotate(5deg);
+}
+
+.img-secondary {
+    opacity: 0;
+    transform: scale(0.85); /* تبدأ أصغر قليلاً لتعطي تأثير قدوم من البعيد */
+}
+
+.product-offer-card:hover .img-secondary {
+    opacity: 1;
+    transform: scale(1) translateY(-10px) rotate(0deg);
+}
+/* --- التفاعلات عند الـ Hover --- */
+
+
+
+/* --- حاوية معلومات المنتج (The Content Hub) --- */
+.card-info {
+    margin-top: 30px; /* زيادة المساحة لتعزيز فخامة الـ Whitespace */
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- اسم المنتج (Luxury Typography - Clean Version) --- */
+.prod-name {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    
+    /* منع أي خطوط تحتية موروثة (Legacy/Link Styles) */
+    text-decoration: none !important;
+    border-bottom: none !important;
+    outline: none;
+    
+    /* حل مشكلة الأسماء الطويلة مع الـ 3 نقط */
+    height: 3rem; /* تعديل الارتفاع ليتناسب مع سطرين بالضبط */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* إيقاف تدقيق اللغة لمنع الخطوط الحمراء/المنقطة أثناء التطوير */
+    spellcheck: false;
+
+    transition: var(--transition);
+}
+
+/* للتأكيد لو الاسم داخل رابط <a> */
+.product-offer-card a {
+    text-decoration: none !important;
+}
+/* --- السعر (The Price Architecture) --- */
+.price-tag {
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column; /* جعل السعر القديم فوق الجديد لرأسية أنيقة */
+    align-items: center;
+    gap: 4px;
+    margin-top: 5px;
+}
+
+/* السعر القديم (The Heritage Price) */
+.old-price {
+    text-decoration: line-through;
+    color: rgba(74, 21, 66, 0.3); /* موف شفاف جداً ليتماشى مع الهوية */
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* التدرج الذهبي الملكي (Liquid Gold Effect) */
+.gold-gradient-text {
+    /* تدرج يجمع بين درجات الذهب المطفية واللامعة */
+    background: linear-gradient(
+        to right, 
+        #A67C00 0%, 
+        #D4AF37 25%, 
+        #F1D592 50%, 
+        #D4AF37 75%, 
+        #A67C00 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    animation: shine 4s linear infinite; /* تنعيم حركة اللمعة */
+}
+
+/* إضافة فاصل أنيق (اختياري) */
+.card-info::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: var(--accent-gold);
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+@keyframes shine {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+
+
+
+
+
+.infinite-slider-container {
+    overflow: hidden; /* الحاوية تظل ثابتة ليبقى الماسك والظلال في مكانها */
+    position: relative;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- حاوية القسم الرئيسي --- */
+.about-heritage-container {
+    padding: 80px 10%;
+    background-color: var(--light-purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* --- الكارت الرئيسي بالبوردر الرفيع --- */
+.heritage-card {
+    display: flex;
+    width: 100%;
+    
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(74, 21, 66, 0.1); /* بوردر رفيع جداً بلون الهوية */
+    border-radius: 40px; /* أطراف ناعمة جداً */
+    padding: 60px;
+    align-items: center;
+    gap: 50px;
+    backdrop-filter: blur(10px);
+   
+}
+
+/* --- الجزء الأيسر: انيميشن الصورة والظل --- */
+.heritage-image-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.heritage-img-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heritage-img-wrapper img {
+    width: 350px; /* حجم الصورة */
+    height: auto;
+    z-index: 5;
+    filter: drop-shadow(0 20px 40px rgba(74, 21, 66, 0.2));
+    animation: floatingHero 4s infinite ease-in-out;
+}
+
+/* بناء الظل السحري */
+.heritage-img-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 210px;
+    height: 18px;
+    background: radial-gradient(ellipse at center, var(--primary-purple) 0%, transparent 80%);
+    border-radius: 50%;
+    opacity: 0.4;
+    filter: blur(4px);
+    z-index: 1;
+    animation: shadowPulseHero 4s infinite ease-in-out;
+}
+
+/* --- الجزء الأيمن: النصوص --- */
+.heritage-content-side {
+    flex: 1;
+    text-align: left;
+}
+
+.heritage-subtitle {
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.heritage-title {
+    font-family: var(--font-heading);
+    color: var(--primary-purple);
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.heritage-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--accent-gold);
+    margin-bottom: 25px;
+}
+
+.heritage-description {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    opacity: 0.9;
+}
+
+.heritage-btn {
+    padding: 12px 35px;
+    background: transparent;
+    border: 1px solid var(--primary-purple);
+    color: var(--primary-purple);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 5px;
+}
+
+.heritage-btn:hover {
+    background: var(--primary-purple);
+    color: white;
+}
+
+/* --- الأنيميشن الموحد --- */
+@keyframes floatingHero {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+}
+
+@keyframes shadowPulseHero {
+    0%, 100% { transform: translateX(-50%) scale(1.1); opacity: 0.4; }
+    50% { transform: translateX(-50%) scale(1); opacity: 0.2; filter: blur(6px); }
+}
+
+/* استجابة الشاشات (Responsive) */
+@media (max-width: 968px) {
+    .heritage-card {
+        flex-direction: column;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .heritage-content-side {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .heritage-img-wrapper img {
+        width: 280px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.testimonials-section {
+    padding: 100px 5%;
+    background-color: var(--light-purple);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    
+}
+
+.testimonials-title {
+    font-family: var(--font-heading);
+    color: var(--primary-purple);
+    font-size: 2.5rem;
+    margin-bottom: 80px;
+    letter-spacing: 3px;
+   
+}
+
+.testimonials-container {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    height: 1300px; /* الارتفاع الخاص بك */
+    
+    display: flex;
+    flex-direction: column;
+    /* توزيع الكروت بمسافات متساوية عمودياً */
+    justify-content: space-evenly; 
+    align-items: center; /* سنحكم التموضع يمين ويسار من الكروت نفسها */
+    
+    /* مساحة أمان من الأعلى والأسفل داخل الـ 1300px */
+    padding: 100px 0; 
+    box-sizing: border-box;
+}
+
+/* ضبط تموضع الكروت يمين ويسار داخل الـ 80% */
+.testimonial-card.right { 
+    align-self: flex-end; 
+}
+
+.testimonial-card.left { 
+    align-self: flex-start; 
+}
+
+.testimonial-card.center { 
+    align-self: center; 
+}
+
+.magic-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* ليمتد على كامل عرض الـ 80% */
+    height: 100%; /* ليمتد على كامل الـ 1300px */
+    z-index: 1;
+    opacity: 0.25;
+    pointer-events: none;
+}
+/* كارت التقييم الفاخر */
+.testimonial-card {
+    position: relative;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 35px;
+    border-radius: 25px;
+    max-width: 450px;
+    transition: all 0.5s ease;
+    box-shadow: 0 10px 30px rgba(74, 21, 66, 0.05);
+   
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-gold);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* توزيع الكروت */
+.testimonial-card.right { align-self: flex-end; text-align: right; }
+.testimonial-card.left { align-self: flex-start; text-align: left; }
+.testimonial-card.center { align-self: center; text-align: center; max-width: 500px; }
+
+/* تفاصيل الكارت */
+.stars {
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-name {
+    font-family: var(--font-heading);
+    color: var(--primary-purple);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.user-status {
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+   /* الحفاظ على الخط السحري وتصغيره ليتناسب مع العرض الجديد */
+    .magic-line {
+     
+        opacity: 0.7; /* تقليل الشفافية قليلاً لضمان عدم تداخله مع النصوص في المساحة الأضيق */
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hero-section {
+    position: relative;
+    height: 110vh; /* أطول قليلاً من الشاشة لإعطاء مساحة للظل */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-purple);
+    overflow: hidden;
+    padding-top: 100px;
+}
+
+/* النص الضخم المتخفي في الخلفية */
+.hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-heading);
+    font-size: 22vw; /* حجم عملاق */
+    color: rgba(45, 35, 46, 0.03); /* شفاف جداً ليعطي فخامة دون إزعاج */
+    z-index: 1;
+    pointer-events: none;
+    letter-spacing: 20px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    width: 100%;
+}
+
+/* العنوان الرئيسي (The Hook) */
+.hero-hook {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    color: var(--text-dark);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.gold-text {
+    color: var(--accent-gold);
+    font-style: italic;
+    font-family: var(--font-body); /* تباين بين الخطوط يعطي فخامة */
+    font-size: 1.2em;
+}
+
+/* حاوية الشوكولاتة */
+.chocolate-container {
+    perspective: 1000px; /* لإعطاء بعد ثالث */
+    margin: 40px 0;
+}
+
+.chocolate-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.floating-choc {
+    width: 100%;
+    max-width: 650px; /* حجم كبير جداً كما طلبت */
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1));
+    animation: luxuryFloat 5s ease-in-out infinite;
+    z-index: 10;
+}
+
+/* الظل الذكي المتحرك */
+.choc-shadow {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 40px;
+    background: radial-gradient(ellipse at center, rgb(45, 35, 46) 0%, rgb(45, 35, 46) 70%);
+    border-radius: 50%;
+    filter: blur(15px);
+    z-index: 1;
+    animation: shadowPulse 5s ease-in-out infinite;
+}
+
+/* النص السفلي */
+.hero-footer-text {
+    margin-top: 50px;
+}
+
+.sub-text {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* مؤشر السكرول الفخم */
+.scroll-indicator {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.gold-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--accent-gold), transparent);
+}
+
+.scroll-label {
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: var(--accent-gold);
+}
+
+/* --- التحريك (Animations) --- */
+
+@keyframes luxuryFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-40px) rotate(2deg); /* ترتفع وت ميل قليلاً */
+    }
+}
+
+@keyframes shadowPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateX(-50%) scale(0.9); /* الظل يصغر ويبعد عندما ترتفع الشوكولاتة */
+        opacity: 0.2;
+    }
+}
+/* تنسيق الخط في حالة العربية (Arabic/RTL) */
+[dir="rtl"] .magic-line {
+    left: 50%;
+    /* نقوم بدمج التوسط translateX مع العكس أفقياً scaleX */
+    transform: translateX(-50%) scaleX(-1); 
+    transform-origin: center;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+    .hero-video-section {
+        /* التأكد من ثبات الارتفاع لعدم ضغط المحتوى */
+        min-height: 100vh;
+    }
+
+    /* المحتوى النصي: منع التصغير والحفاظ على المركز */
+    .video-content-wrapper {
+        width: 90%; /* إعطاء مساحة أمان جانبية */
+    }
+
+    .video-title {
+        /* إلغاء تأثير clamp المعتمد على الـ vw لضمان عدم الصغر */
+        font-size: 5rem !important; /* حجم ثابت فخم */
+        line-height: 1.1;
+        letter-spacing: -1px; /* تقليل التباعد السلبي قليلاً للوضوح */
+    }
+
+    .video-subtext {
+        font-size: 1rem; /* حجم ثابت واضح */
+        letter-spacing: 6px; /* تقليل طفيف لتناسب عرض الموبايل/التابلت */
+        margin-top: 15px;
+        width: 100%;
+        line-height: 1.5;
+    }
+
+    /* تعديل الجزء الذهبي (Explore) ليكون متناسباً مع الشاشات الطولية */
+    .explore-badge {
+        margin-top: 30px;
+    }
+
+    .badge-line {
+        height: 60px; /* تقصير الخط قليلاً لتوفير مساحة عمودية */
+    }
+
+    /* تحسين الفيديو لضمان عدم وجود مسافات بيضاء */
+    .hero-video-bg {
+        width: auto;
+        height: 110vh; /* زيادة الارتفاع لضمان التغطية الكاملة */
+    }
+}
+
+/* --- التنسيق الشامل لصفحة Diamore عند 850 بكسل --- */
+@media (max-width: 850px) {
+
+    /* 1. السيكشن الرئيسي (Hero Video) */
+    .video-title {
+        font-size: 4rem !important; /* حجم متزن لا يطغى على الشاشة */
+        letter-spacing: -1px;
+    }
+    
+    .video-subtext {
+        letter-spacing: 5px;
+        font-size: 0.9rem;
+    }
+
+    /* 2. قسم كشف البراند (Brand Reveal) */
+    .diamore-brand-reveal {
+        padding: 40px 5%;
+    }
+    
+    .brand-description {
+        font-size: 1.1rem; /* تصغير طفيف ليناسب القراءة الطولية */
+        padding: 0 20px;
+    }
+.section-header {
+        flex-direction: row; /* التأكيد على البقاء في سطر واحد */
+        justify-content: space-between; /* المحافظة على توزيع الأطراف */
+        align-items: flex-end;
+        max-width: 90%; /* توسيع المساحة قليلاً للاستفادة من العرض */
+        margin: 0 auto 40px;
+    }
+
+    .main-heading {
+        font-size: 1.8rem; /* تصغير العنوان لضمان عدم اصطدامه بالأزرار */
+        line-height: 1.2;
+    }
+
+    .gold-label {
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+    }
+
+    /* تصغير حجم أزرار التحكم قليلاً لتناسب الشاشة */
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* تحسين السلايدر لضمان تجربة سحب سلسة */
+    .slider-track {
+        gap: 25px; /* مسافة متوسطة وفخمة */
+    }
+
+    .product-offer-card {
+        width: 290px; /* عرض متزن جداً للتابلت */
+        padding: 35px 20px;
+    }
+
+    .image-wrapper {
+        height: 280px; 
+    }
+
+    .image-wrapper img {
+        width: 200px; /* حجم صورة المنتج */
+    }
+
+    /* تقليل قوة القناع الجانبي (Mask) لترك مساحة رؤية أكبر للكروت */
+    .infinite-slider-container {
+        -webkit-mask-image: linear-gradient(to right, 
+            transparent 0%, 
+            black 10%, 
+            black 90%, 
+            transparent 100%
+        );
+        mask-image: linear-gradient(to right, 
+            transparent 0%, 
+            black 10%, 
+            black 90%, 
+            transparent 100%
+        );
+    }
+
+    /* 4. قسم التراث (Heritage Section) */
+    .about-heritage-container {
+        padding: 60px 5%;
+    }
+
+    .heritage-card {
+        flex-direction: column; /* تحويل التخطيط لرأسي */
+        padding: 40px 30px;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .heritage-content-side {
+        text-align: center;
+        align-items: center;
+    }
+
+    .heritage-title {
+        font-size: 2.2rem;
+    }
+
+    .heritage-img-wrapper img {
+        width: 250px; /* حجم مناسب للموبايل والتابلت */
+    }
+.testimonials-section {
+        padding: 60px 3%; /* تقليل الحواف الجانبية لإعطاء مساحة للتوزيع */
+    }
+
+    .testimonials-title {
+        font-size: 2rem;
+        margin-bottom: 50px;
+    }
+
+    .testimonials-container {
+        width: 100%; /* استغلال كامل العرض المتاح */
+        height: auto; /* الارتفاع مرن حسب المحتوى */
+        gap: 60px; /* مسافة رأسية جيدة بين الكروت المتداخلة */
+        padding: 40px 0;
+    }
+
+    /* الحفاظ على التوزيع الأصلي مع تصغير الحجم */
+    .testimonial-card {
+        max-width: 380px; /* تصغير العرض لضمان بقاء الكارت (اليمين/اليسار) داخل الشاشة */
+        padding: 25px;
+        border-radius: 20px;
+    }
+
+    /* ضبط الحجم الداخلي للنصوص */
+    .testimonial-text {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .user-name {
+        font-size: 0.9rem;
+    }
+
+    /* الحفاظ على الخط السحري وتصغيره ليتناسب مع العرض الجديد */
+    .magic-line {
+        display: block; /* التأكيد على بقائه */
+        opacity: 0.7; /* تقليل الشفافية قليلاً لضمان عدم تداخله مع النصوص في المساحة الأضيق */
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ضمان بقاء الكروت في أماكنها يميناً ويساراً */
+    .testimonial-card.right { 
+        align-self: flex-end; 
+    }
+
+    .testimonial-card.left { 
+        align-self: flex-start; 
+    }
+
+    .testimonial-card.center { 
+        align-self: center; 
+    }
+
+
+.hero-section {
+        height: auto;
+        /* تقليل الـ padding العلوي لرفع المحتوى للأعلى */
+        padding: 60px 5% 40px; 
+        min-height: 80vh; /* ضمان وجود مساحة كافية دون مبالغة */
+    }
+
+    .hero-hook {
+        font-size: 3.2rem; /* تصغير العنوان ليتناسب مع الصورة الأصغر */
+        margin-bottom: 10px;
+    }
+
+    /* تصغير صورة الشوكولاتة لتعطي مساحة للنصوص */
+    .floating-choc {
+       
+        width: 85%; /* التأكد من أنها لا تلمس الحواف في الشاشات الأصغر */
+        margin: 0 auto;
+    }
+
+    /* تقليل المسافات بين العناصر لربط التصميم ببعضه */
+    .chocolate-container {
+        margin: 20px 0;
+    }
+
+    .hero-bg-text {
+        font-size: 25vw; /* تقليل الحجم قليلاً ليظل خلفية ولا يشتت */
+        letter-spacing: 10px;
+    }
+
+    .hero-footer-text {
+        margin-top: 30px; /* تقليل المسافة فوق النص السفلي */
+    }
+
+    .sub-text {
+        font-size: 1rem;
+        letter-spacing: 4px; /* الحفاظ على تباعد الحروف للفخامة */
+    }
+
+    /* تقصير خط السكرول ليتناسب مع التصميم المضغوط */
+    .gold-line {
+        height: 50px;
+    }
+}
+
+/* --- التنسيق الشامل لصفحة Diamore عند 560 بكسل --- */
+@media (max-width: 560px) {
+
+/* 1. السيكشن الرئيسي (Hero Video) - تصغير بنسبة 20% عن الكود السابق */
+    .video-title {
+        /* النزول من 4.2rem إلى حوالي 3.4rem */
+        font-size: 3.4rem !important; 
+        line-height: 1.1;
+        letter-spacing: -1px; /* تقليل التضييق لجعل الخط يتنفس أكثر */
+        width: 100%;
+        text-align: center;
+    }
+    
+    .video-subtext {
+        /* النزول من 1.1rem إلى حوالي 0.9rem */
+        font-size: 0.9rem;
+        letter-spacing: 3.5px;
+        padding: 0 20px;
+        margin-top: 15px;
+        opacity: 0.85;
+    }
+
+    /* إعادة الـ Explore Badge لحجمه الطبيعي أو أكبر قليلاً جداً */
+    .explore-badge {
+        transform: scale(1); /* إلغاء التكبير المبالغ فيه ليتناسب مع العنوان الجديد */
+        margin-top: 35px;
+    }
+
+
+
+    /* 2. قسم كشف البراند (Brand Reveal) */
+    .brand-title {
+        font-size: 1.8rem;
+    }
+    
+    .brand-description {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+/* 3. سلايدر العروض (Exclusive Offers) - الحفاظ على التوزيع الأفقي */
+    .section-header {
+        flex-direction: row; /* الحفاظ على النص يساراً والأزرار يميناً */
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 10px;
+        max-width: 95%;
+        margin: 0 auto 30px;
+    }
+
+    .main-heading {
+        /* تصغير العنوان ليتناسب مع بقاء الأزرار بجانبه */
+        font-size: 1.4rem; 
+       
+        text-align: left;
+    }
+
+    .gold-label {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+    }
+
+    /* تصغير الأزرار بشكل كبير كما طلبت */
+    .nav-btn {
+        width: 32px; 
+        height: 32px;
+    }
+
+    .nav-btn i {
+        font-size: 0.8rem; /* تصغير السهم داخل الزر */
+    }
+
+    .slider-track {
+        gap: 12px;
+    }
+
+    .product-offer-card {
+        width: 230px; /* تصغير الكارت قليلاً لضمان الانسيابية */
+        padding: 20px 12px;
+    }
+
+    .image-wrapper {
+        height: 180px;
+    }
+
+    .image-wrapper img {
+        width: 160px; /* تصغير المنتج ليتناسب مع حجم الكارت الجديد */
+    }
+
+    .gold-gradient-text {
+        font-size: 1.1rem;
+    }
+
+    /* 4. قسم التراث (Heritage Section) */
+    .heritage-title {
+        font-size: 1.8rem;
+    }
+
+    .heritage-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .heritage-img-wrapper img {
+        width: 220px;
+    }
+
+/* 5. قسم التقييمات (Testimonials) - الحفاظ على التوزيع المتعرج والخط */
+    .testimonials-section {
+        padding: 40px 2%;
+        overflow: hidden; /* لضمان عدم حدوث سكرول جانبي بسبب الخط أو الكروت */
+      
+    }
+
+    .testimonials-title {
+        font-size: 1.4rem; /* تصغير العنوان ليتناسب مع العرض */
+        margin-bottom: 40px;
+        width: 300px;
+        margin: 0 auto 40px; /* توسيط العنوان مع مسافة جيدة من الأسفل */
+    }
+
+    .testimonials-container {
+        gap: 40px; /* تقليل المسافة الرأسية */
+    }
+
+    .testimonial-card {
+        /* عرض صغير جداً (حوالي 200px) ليظهر تأثير اليمين واليسار بوضوح في 560px */
+        max-width: 210px; 
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    /* الحفاظ على التوزيع الأصلي */
+    .testimonial-card.right { 
+        align-self: flex-end !important; 
+        margin-right: 5px;
+    }
+
+    .testimonial-card.left { 
+        align-self: flex-start !important; 
+        margin-left: 5px;
+    }
+
+    .testimonial-card.center { 
+        align-self: center !important; 
+    }
+
+    .testimonial-text {
+        font-size: 0.85rem; /* تصغير الخط ليتناسب مع الكارت الصغير */
+        line-height: 1.4;
+    }
+
+    .user-name {
+        font-size: 0.75rem;
+    }
+
+  
+    /* 6. قسم الهيرو البديل (Hero Section with Choc) */
+    .hero-section {
+        padding: 40px 5% 30px;
+    }
+
+    .hero-hook {
+        font-size: 2.2rem;
+    }
+
+    .floating-choc {
+        width: 90%;
+        max-width: 350px; /* تصغير الشوكولاتة لترك مساحة للتنفس */
+    }
+
+    .hero-bg-text {
+        font-size: 35vw; /* جعل النص الخلفي يملأ الفراغ الفني */
+    }
+
+    .sub-text {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+    }
+
+    .gold-line {
+        height: 40px;
+    }
+}
+

@@ -1,0 +1,478 @@
+/* ==========================================================================
+   1. التنسيق الأساسي للهيدر (Main Header) - ديسكتوب
+   ========================================================================== */
+
+.main-header {
+    width: 100%;
+    position: fixed; /* ليطفو فوق الـ Hero */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+}
+
+/* الحالة الابتدائية (الشفافة والطويلة) */
+.main-header.initial {
+    height: 120px; 
+    background: #ffdffa38; 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1); 
+    box-shadow: none;
+}
+
+/* الحالة عند السكرول (الداكنة والنحيفة) */
+.main-header.scrolled {
+    height: 80px; 
+    background-color: var(--primary-purple); 
+    border-bottom: 1px solid var(--accent-gold); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* ==========================================================================
+   2. توزيع المحتوى (Links, Logo, Buttons)
+   ========================================================================== */
+
+.nav-left, .nav-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+}
+
+.nav-links a {
+    letter-spacing: 1px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+/* تغيير الألوان بناءً على حالة الهيدر */
+.initial .nav-links a, 
+.initial .lang-btn {
+   color: var(--light-purple);
+}
+
+.scrolled .nav-links a, 
+.scrolled .lang-btn,
+.desktop-cart {
+    color: var(--light-purple);
+}
+
+.nav-links a:hover, .lang-btn:hover {
+    color: var(--accent-gold) !important;
+}
+
+/* اللوجو وتأثيره */
+.logo-img {
+    height: 80px;
+    transition: height 0.5s ease;
+    filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.2));
+}
+
+.scrolled .logo-img {
+    height: 65px;
+}
+
+/* القسم الأيمن */
+.nav-right {
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.lang-btn, .corporate-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+   
+}
+
+.corporate-link {
+    color: var(--accent-gold) !important;
+    font-weight: 400;
+    
+}
+
+.lang-btn:hover, .corporate-link:hover {
+    color: var(--accent-gold) !important;
+    transform: translateY(-1px);
+     
+}
+
+.lang-btn::after {
+    content: "•";
+    position: absolute;
+    right: -22px;
+    color: var(--accent-gold);
+    font-size: 0.8rem;
+    opacity: 0.5;
+     
+}
+
+/* ==========================================================================
+   3. عداد العربة (Cart Badge)
+   ========================================================================== */
+
+.cart-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -14px;
+    background: var(--accent-gold);
+    color: var(--text-dark) !important;
+    font-size: 0.65rem; 
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    text-align: center;
+    font-weight: 700;
+    border: 1px solid var(--text-dark);
+}
+/* مثال لتحسين الخطوط عند التحويل للعربي */
+[lang="ar"] {
+    font-family: 'Cairo', sans-serif; /* أو أي خط عربي فخم تطلبه */
+}
+
+/* تأكد أن الأيقونات التي لها اتجاه (مثل السهم) تنعكس */
+[dir="rtl"] .fa-arrow-right {
+    transform: rotate(180deg);
+}
+/* زر تبديل اللغة - تصميم مينيمالست */
+.lang-toggle-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    color: inherit; /* سيأخذ لون الروابط المجاورة تلقائياً */
+}
+
+/* حالة التحويم - مجرد تغيير في اللون أو ارتفاع بسيط */
+.lang-toggle-btn:hover {
+    color: var(--accent-gold) !important;
+    transform: translateY(-1px);
+}
+
+/* تنسيق إضافي لضمان التناسق في الحالة الابتدائية */
+.initial .lang-toggle-btn {
+    color: var(--light-purple);
+}
+
+/* تنسيق إضافي في حالة السكرول */
+.scrolled .lang-toggle-btn {
+    color: var(--light-purple);
+}
+
+/* المسافة في القسم الأيمن */
+.nav-right {
+    justify-content: flex-end;
+    gap: 30px;
+}
+/* ==========================================================================
+   4. التعديلات الجمالية للشاشات المتوسطة (950px - 1200px)
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    .nav-container { padding: 0 30px; }
+    .logo-img { height: 65px; }
+    .nav-links { gap: 20px; font-size: 1rem; }
+    .nav-right { gap: 25px; }
+    .lang-btn, .corporate-link { font-size: 1rem; }
+}
+
+@media (max-width: 950px) {
+    .nav-container { padding: 0 20px; }
+    .logo-img { height: 55px; }
+    .nav-links { gap: 15px; font-size: 0.9rem; }
+    .nav-right { gap: 15px; }
+    .lang-btn::after { right: -10px; }
+}
+
+/* ==========================================================================
+   5. الشريط السفلي للموبايل (Mobile Bottom Nav) - ثابت 850px
+   ========================================================================== */
+
+@media (max-width: 850px) {
+    /* الهيدر العلوي يصبح داكن وثابت */
+    .main-header.initial, 
+    .main-header.scrolled {
+        height: 70px !important;
+        background-color: var(--primary-purple) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+        padding: 0 20px;
+       
+    }
+
+    .logo-img { height: 40px !important; }
+
+    /* الشريط السفلي المستقل */
+    .mobile-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+          background-color: var(--primary-purple) !important;
+        border-top: 1px solid var(--accent-gold); 
+        padding: 13px 0 12px 0; 
+        z-index: 9999;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .mobile-nav-links {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+    }
+
+    .mobile-nav-links a {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2px;
+        color: var(--light-purple);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .mobile-nav-links a i { font-size: 1.25rem; }
+    .mobile-nav-links a span { font-size: 0.7rem; font-weight: 300; }
+
+    /* Hover في الموبايل */
+    .mobile-nav-links a:hover, 
+    .mobile-nav-links a:active {
+        color: var(--accent-gold) !important;
+    }
+
+    .mobile-nav-links a:hover i { transform: translateY(-2px); transition: transform 0.3s; }
+
+    /* النقطة الذهبية تحت العنصر النشط */
+    .mobile-nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        width: 4px;
+        height: 4px;
+        background-color: var(--accent-gold);
+        border-radius: 50%;
+        transform: scale(0);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 0 5px var(--accent-gold);
+    }
+
+    .mobile-nav-links a:hover::after { transform: scale(1); }
+
+    /* موازنة الجزء العلوي يمين */
+    .lang-btn { font-size: 1.1rem; font-weight: 500; color: var(--light-purple) !important; }
+}
+/* ... كودك السابق ... */
+@media (max-width: 850px) {
+    /* 1. الهيدر العلوي: نسمح له بالشفافية في البداية */
+    .main-header.initial {
+        height: 70px !important;
+        background: rgba(255, 255, 255, 0.03) !important; /* شفافية زجاجية */
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        border-bottom: 1px solid rgba(197, 160, 89, 0.1) !important;
+        
+    }
+
+    /* 2. الهيدر العلوي: يصبح داكناً عند السكرول فقط */
+    .main-header.scrolled {
+        height: 70px !important;
+        background-color: var(--primary-purple) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid var(--accent-gold) !important;
+    }
+
+    /* 3. تعديل ألوان العناصر بناءً على الحالة */
+ 
+
+    .main-header.scrolled .lang-btn {
+        color: var(--light-purple) !important;
+    }
+
+    .logo-img {
+        height: 45px !important;
+        transition: height 0.3s ease;
+    }
+
+    /* 4. الشريط السفلي (يبقى كما هو داكن للفخامة) */
+    .mobile-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-purple);
+        border-top: 1px solid var(--accent-gold);
+        padding: 10px 0 16px 0;
+        z-index: 9999;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    }
+}
+/* ==========================================================================
+   6. الهواتف الصغيرة جداً (أقل من 460px)
+   ========================================================================== */
+
+
+/* --- التنسيقات الخاصة بالهواتف الصغيرة جداً (أقل من 460 بكسل) --- */
+@media (max-width: 460px) {
+    
+    /* 1. تصغير الهيدر العلوي لترك مساحة للمحتوى */
+    .main-header {
+        padding: 12px 15px; /* تقليل المساحة الجانبية والعلوية */
+    }
+
+    .logo-img {
+        height: 35px; /* تصغير اللوجو قليلاً */
+    }
+
+    /* 2. نحافة إضافية للشريط السفلي */
+    .nav-left {
+        padding: 10px 0 10px 0; /* تقليل الارتفاع الكلي للشريط */
+    }
+
+    /* تصغير حجم الأيقونات لتناسب الشاشة الضيقة */
+    .mobile-icon, 
+    .fa-cart-shopping {
+        font-size: 1.15rem !important;
+    }
+
+    /* تصغير النصوص تحت الأيقونات */
+    .nav-links a span, 
+    .mobile-text {
+        font-size: 0.65rem !important;
+        letter-spacing: 0; /* إلغاء تباعد الحروف لتوفير مساحة */
+    }
+
+    .nav-links {
+        gap: 5px; /* تقريب العناصر من بعضها أفقياً */
+    }
+
+    /* 3. ضبط عداد العربة ليناسب الحجم الجديد */
+    .cart-count {
+        width: 14px;
+        height: 14px;
+        min-width: 14px;
+        font-size: 0.6rem;
+        right: -10px; /* تقريب العداد من الأيقونة أكثر */
+    
+        padding-left: 4px; 
+    }
+
+    /* 4. الجزء العلوي يمين (اللغة والشركات) */
+    .nav-right {
+        gap: 10px; /* تقليل المسافة بين اللغة وكلمة Corporate */
+    }
+
+    .lang-btn {
+        font-size: 0.85rem !important; /* تصغير خط اللغة */
+    }
+
+    .lang-btn::after {
+        right: -8px; /* تقريب النقطة الفاصلة */
+    }
+
+    .corporate-link {
+        font-size: 0.8rem !important;
+    }
+
+    .corporate-link i {
+        font-size: 0.75rem; /* تصغير أيقونة الشركات */
+    }
+
+    /* تقليل الـ padding السفلي للـ body ليناسب نحافة الشريط */
+    body {
+        padding-bottom: 50px;
+    }
+}
+/* --- التنسيقات الخاصة بالهواتف الصغيرة جداً (أقل من 460 بكسل) --- */
+@media (max-width: 460px) {
+    
+    /* 1. إجبار اللوجو على التصغير بكسر قاعدة الـ 850px */
+    .logo-img {
+        height: 32px !important; /* تقليل الارتفاع ليناسب الشاشات الضيقة */
+        width: auto;
+    }
+
+    /* 2. ضبط الهيدر العلوي */
+    .main-header.initial, 
+    .main-header.scrolled {
+        height: 60px !important; /* تقليل ارتفاع الهيدر ككل */
+        padding: 0 10px !important;
+    }
+
+    /* 3. تنسيق Corporate واللغة لعدم حدوث تكدس */
+    .nav-right {
+        gap: 8px !important;
+    }
+
+    .corporate-link {
+        font-size: 0.7rem !important; /* تصغير الخط جداً */
+    }
+
+    .corporate-link i {
+        font-size: 0.8rem !important; /* تصغير الأيقونة */
+    }
+
+    .lang-btn {
+        font-size: 0.75rem !important;
+        padding: 2px 5px !important;
+    }
+
+}

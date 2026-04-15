@@ -1,0 +1,299 @@
+.footer {
+    background-color: var(--primary-purple);
+    padding: 100px 10% 40px; /* زيادة الـ padding تعطي فخامة أكثر */
+    color: var(--light-purple);
+    font-family: var(--font-body);
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    width: 100vw;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+   
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+/* --- اللوجو والنص --- */
+.footer-logo {
+    width: 180px;
+    margin-bottom: 30px;
+    
+}
+
+.footer-tagline {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.85;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+/* --- تنسيق أيقونات FontAwesome --- */
+.social-links {
+    display: flex;
+    gap: 25px;
+}
+
+.social-links a i {
+    font-size: 1.3rem;
+    color: var(--light-purple);
+    transition: var(--transition);
+}
+
+.social-links a:hover i {
+    color: var(--accent-gold);
+    transform: translateY(-5px);
+}
+
+/* --- العناوين والروابط --- */
+.footer-heading {
+    font-family: var(--font-heading);
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.quick-links ul li {
+    list-style: none;
+    margin-bottom: 18px;
+}
+
+.quick-links ul li a {
+    color: var(--light-purple);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    opacity: 0.75;
+}
+
+.quick-links ul li a:hover {
+    opacity: 1;
+    color: var(--accent-gold);
+    padding-left: 8px;
+}
+
+/* --- تفاصيل التواصل --- */
+.contact-details p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.9;
+}
+
+.contact-details i {
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+}
+
+.gold-divider {
+    width: 50px;
+    height: 1.5px;
+    background: var(--accent-gold);
+    margin-top: 25px;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+/* --- الحقوق --- */
+.footer-bottom {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    opacity: 0.6;
+}
+
+/* جعل قسم تواصل معنا (Contact) يأخذ الترتيب الثاني ليظهر في الوسط أو اليمين */
+[dir="rtl"] .contact-info {
+    order: 2;
+    text-align: right; /* ضمان محاذاة النص لليمين */
+}
+
+/* جعل قسم الاستفسارات (Inquiries) يأخذ الترتيب الثالث ليظهر أقصى اليسار */
+[dir="rtl"] .quick-links {
+    order: 3;
+    text-align: right;
+}
+/* --- التنسيق الذكي للشاشات الطولية والتابلت (900px) --- */
+@media (max-width: 900px) {
+    .footer {
+        padding: 60px 5% 30px; /* تقليل الحواف لزيادة مساحة المحتوى */
+    }
+
+    .footer-container {
+        /* استخدام الـ Grid لتقسيم المساحة بذكاء */
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* تقسيم الشاشة لعمودين */
+        gap: 40px;
+        text-align: left; /* الحفاظ على المحاذاة الجانبية تعطي فخامة أكثر من التوسط */
+    }
+
+    /* جعل قسم البراند يمتد على العرض بالكامل في الأعلى */
+    .brand-info {
+        grid-column: 1 / span 2; 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 30px;
+        margin-bottom: 10px;
+        text-align: center; /* فقط البراند يكون في المنتصف */
+    }
+
+    .brand-info .footer-tagline {
+        max-width: 500px;
+        margin: 0 auto 20px;
+    }
+
+    .brand-info .social-links {
+        justify-content: center;
+    }
+
+    .footer-logo {
+        width: 140px; /* تصغير اللوجو قليلاً ليتناسب مع المساحة */
+        margin-bottom: 20px;
+    }
+
+    /* الأقسام الأخرى (Quick Links & Connect) */
+    .footer-section {
+        margin-bottom: 0;
+    }
+
+    .footer-heading {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .quick-links ul li, 
+    .contact-details p {
+        font-size: 1rem; /* تصغير الخط قليلاً للشاشات الأصغر */
+    }
+
+    .gold-divider {
+        margin: 20px 0; /* محاذاة الديفايدر لليسار مع النصوص */
+    }
+
+    .footer-bottom {
+        margin-top: 50px;
+    }
+}
+@media (max-width: 850px){
+  .footer {
+   padding-bottom: 110px;
+  }
+}
+/* --- تنسيق الموبايل الفاخر (430px) --- */
+@media (max-width: 460px) {
+    .footer {
+        padding: 50px 8% 60px; /* زيادة الهوامش الجانبية قليلاً لتركيز المحتوى في المنتصف */
+    }
+    
+
+    .footer-container {
+        display: flex; /* العودة للـ Flex لتسهيل التوسيط الكامل */
+        flex-direction: column;
+        gap: 45px; /* مسافة متساوية وفخمة بين الأقسام */
+        text-align: center;
+    }
+
+    /* جعل كل قسم يأخذ العرض الكامل بشكل مستقل */
+    .brand-info, 
+    .quick-links, 
+    .contact-info {
+        grid-column: auto; 
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: none; /* إزالة الحدود الجانبية */
+        padding-bottom: 0;
+    }
+
+    /* تصغير اللوجو ليناسب الموبايل دون فقدان التفاصيل */
+    .footer-logo {
+        width: 130px;
+        margin-bottom: 20px;
+    }
+
+    /* تحسين قراءة النص التسويقي */
+    .footer-tagline {
+        font-size: 1rem;
+        line-height: 1.6;
+        max-width: 100%;
+        margin-bottom: 25px;
+        padding: 0 10px; /* منع النص من الالتصاق بالحواف */
+    }
+
+    /* السوشيال ميديا في الموبايل */
+    .social-links {
+        gap: 30px; /* توسيع المسافة قليلاً لتسهيل الضغط بالإصبع */
+    }
+
+    .social-links a i {
+        font-size: 1.4rem; /* تكبير الأيقونات قليلاً لتسهيل التفاعل */
+    }
+
+    /* العناوين والروابط */
+    .footer-heading {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    /* إضافة خط ذهبي صغير جداً تحت كل عنوان للزينة */
+    .footer-heading::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 1px;
+        background: var(--accent-gold);
+        opacity: 0.5;
+    }
+
+    .quick-links ul li {
+        margin-bottom: 15px;
+    }
+
+    .quick-links ul li a {
+        font-size: 1.05rem;
+    }
+
+    /* معلومات التواصل في المنتصف */
+    .contact-details p {
+        justify-content: center;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+
+    .gold-divider {
+        margin: 15px auto; /* توسيط الخط الذهبي */
+        width: 40px;
+    }
+
+    /* الحقوق السفلية */
+    .footer-bottom {
+        margin-top: 40px;
+        padding-top: 20px;
+    }
+
+    .footer-bottom p {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        letter-spacing: 1.5px;
+    }
+}

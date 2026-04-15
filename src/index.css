@@ -1,0 +1,71 @@
+/* استدعاء الخطوط من جوجل فونت */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* لوحة الألوان (الهوية الموف الفاتحة) */
+/* الموف العميق: تم تقليل الإضاءة وزيادة العمق */
+  --primary-purple: #4A1542;       
+  
+  /* الخلفية: أصبحت أنقى وأفتح لتعطي مساحة تنفس للتصميم */
+  --light-purple: #f2eff7;         
+  
+  /* الذهبي: درجة Metallic Gold مطفية تظهر بوضوح فوق الغامق */
+  --accent-gold: #D4AF37;          
+  
+  --text-dark: #691960;            
+  --text-dark-2: #4a0e43; 
+  
+  
+  
+  
+  /* المتغيرات الخاصة بالخطوط */
+ 
+--font-heading: 'Cinzel', serif;            /* للعناوين الكبيرة */
+  --font-body: 'Cormorant Garamond', serif;   /* للنصوص الصغيرة والوصف */
+
+  /* إعدادات إضافية */
+  --transition: all 0.3s ease;
+}
+
+/* التنسيقات الأساسية للموقع */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  /* منع السكرول العرضي */
+  overflow-x: hidden;
+  background-color: var(--light-purple);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* تنسيق الروابط (اختياري) */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+/* تحسين شكل السكرول بار الطولي (اختياري لزيادة الفخامة) */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-purple);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-purple);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
