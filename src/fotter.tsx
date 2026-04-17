@@ -66,9 +66,9 @@ export default function Fotter({ lang }: FooterProps) {
                 <div className="footer-section quick-links">
                     <h4 className="footer-heading">{lang === 'en' ? 'Inquiries' : 'الاستفسارات'}</h4>
                     <ul>
-                        <li><a href="/contact">{lang === 'en' ? 'Customer Service' : 'خدمة العملاء'}</a></li>
-                        <li><a href="/corporate">{lang === 'en' ? 'Corporate Orders' : 'طلبات الشركات'}</a></li>
-                        <li><a href="/heritage">{lang === 'en' ? 'Our Story' : 'قصتنا'}</a></li>
+                        <li><a >{lang === 'en' ? 'Customer Service' : 'خدمة العملاء'}</a></li>
+                        <li><a >{lang === 'en' ? 'Corporate Orders' : 'طلبات الشركات'}</a></li>
+                        <li><a >{lang === 'en' ? 'Our Story' : 'قصتنا'}</a></li>
                     </ul>
                 </div>
 

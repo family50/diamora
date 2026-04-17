@@ -60,15 +60,15 @@ export default function Header({ lang, toggleLanguage }: HeaderProps) {
                             <ul className="nav-links">
                                 {/* استخدام NavLink لتمييز الرابط النشط */}
                                 <li><NavLink to="/"><span>{lang === 'en' ? 'Home' : 'الرئيسية'}</span></NavLink></li>
-                                <li><NavLink to="/collections/collections"><span>{lang === 'en' ? 'Collections' : 'المجموعات'}</span></NavLink></li>
-                                <li><NavLink to="/about"><span>{lang === 'en' ? 'About' : 'من نحن'}</span></NavLink></li>
+                                <li style={{ color: '#ffffff' }}><span>{lang === 'en' ? 'Collections' : 'المجموعات'}</span></li>
+                                <li style={{ color: '#ffffff' }}><span>{lang === 'en' ? 'About' : 'من نحن'}</span></li>
                                 <li className="desktop-cart-li">
-                                    <NavLink to="/cart/Cart" className="desktop-cart">
+                                    <a className="desktop-cart">
                                         <div className="cart-wrapper">
                                             <i className="fa-solid fa-cart-shopping"></i>
                                             <span className="cart-count">0</span>
                                         </div>
-                                    </NavLink>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -81,10 +81,10 @@ export default function Header({ lang, toggleLanguage }: HeaderProps) {
 
                <div className="nav-right">
                          {/* رابط Corporate أيضاً يمكن تمييزه */}
-                         <NavLink to="/corporate" className="corporate-link">
+                         <nav  className="corporate-link">
                              <i className="fa-solid fa-handshake"></i>
                              <span>{lang === 'en' ? 'Corporate' : 'للشركات'}</span>
-                         </NavLink>
+                         </nav>
                          <button className="lang-toggle-btn" onClick={toggleLanguage}>
                             {lang === 'en' ? 'العربية' : 'English'}
                         </button>
@@ -96,16 +96,16 @@ export default function Header({ lang, toggleLanguage }: HeaderProps) {
                 <div className="mobile-bottom-nav">
                     <ul className="mobile-nav-links">
                         <li><NavLink to="/"><i className="fa-solid fa-house"></i><span>{lang === 'en' ? 'Home' : 'الرئيسية'}</span></NavLink></li>
-                        <li><NavLink to="/collections/collections"><i className="fa-solid fa-gem"></i><span>{lang === 'en' ? 'Collections' : 'المجموعات'}</span></NavLink></li>
-                        <li><NavLink to="/about"><i className="fa-solid fa-leaf"></i><span>{lang === 'en' ? 'About' : 'من نحن'}</span></NavLink></li>
+                        <li><a ><i className="fa-solid fa-gem"></i><span>{lang === 'en' ? 'Collections' : 'المجموعات'}</span></a></li>
+                        <li><a><i className="fa-solid fa-leaf"></i><span>{lang === 'en' ? 'About' : 'من نحن'}</span></a></li>
                         <li>
-                            <NavLink to="/cart/Cart">
+                            <a>
                                 <div className="cart-wrapper">
                                     <i className="fa-solid fa-cart-shopping"></i>
                                     <span className="cart-count">0</span>
                                 </div>
                                 <span>{lang === 'en' ? 'Cart' : 'السلة'}</span>
-                            </NavLink>
+                            </a>
                         </li>
                     </ul>
                 </div>
