@@ -474,7 +474,7 @@ useLayoutEffect(() => {
             {/* Hero Section */}
         <section ref={heroSecRef} className="hero-video-section">
     <div className="video-overlay"></div> 
-<head>
+
     {/* LuxeMedia بياخد الـ variant والـ class اللي بيحدد مكانه */}
     <LuxeMedia 
         variant="video" 
@@ -493,7 +493,7 @@ useLayoutEffect(() => {
             <source src="/hero-video.WebM" type="video/webm" />
         </video>
     </LuxeMedia>
-</head>
+    
 
     <div className="video-content-wrapper">
         <h1 className="video-title">
