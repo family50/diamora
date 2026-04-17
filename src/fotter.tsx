@@ -17,7 +17,7 @@ export default function Fotter({ lang }: FooterProps) {
     className="footer-logo-wrapper"
 >
     <img 
-        src="/logo.png" 
+        src="/logo.AVIF" 
         alt="Diamore Logo" 
         className="footer-logo" 
        

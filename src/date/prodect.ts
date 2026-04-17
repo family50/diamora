@@ -26,8 +26,8 @@ export const products: Product[] = [
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Caramel-Popcorn-Crunch-Bar-image3d1.png",
-    image3d2: "/prodect/Caramel-Popcorn-Crunch-Bar-image3d2.png",
+    image3d1: "/prodect/Caramel-Popcorn-Crunch-Bar-image3d1.AVIF",
+    image3d2: "/prodect/Caramel-Popcorn-Crunch-Bar-image3d2.AVIF",
     gallery: [
       "/images/products/bar-detail-1.jpg",
       "/images/products/bar-detail-2.jpg",
@@ -59,8 +59,8 @@ flavors: [
   },
     category: "mold",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/cheesecake-bar-image3d1.png",
-    image3d2: "/prodect/cheesecake-bar-image3d2.png",
+    image3d1: "/prodect/cheesecake-bar-image3d1.AVIF",
+    image3d2: "/prodect/cheesecake-bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -88,8 +88,8 @@ flavors: [
   },
     category: "mold",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/cinnabon-bar-image3d1.png",
-    image3d2: "/prodect/cinnabon-bar-image3d2.png",
+    image3d1: "/prodect/cinnabon-bar-image3d1.AVIF",
+    image3d2: "/prodect/cinnabon-bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -116,8 +116,8 @@ flavors: [
   },
     category: "mold",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/ferrero-fudge-cake-bar-image3d1.png",
-    image3d2: "/prodect/ferrero-fudge-cake-bar-image3d2.png",
+    image3d1: "/prodect/ferrero-fudge-cake-bar-image3d1.AVIF",
+    image3d2: "/prodect/ferrero-fudge-cake-bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -145,8 +145,8 @@ flavors: [
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Honeycomb-Crunch-Bar-image3d1.png",
-    image3d2: "/prodect/Honeycomb-Crunch-Bar-image3d2.png",
+    image3d1: "/prodect/Honeycomb-Crunch-Bar-image3d1.AVIF",
+    image3d2: "/prodect/Honeycomb-Crunch-Bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -175,8 +175,8 @@ flavors: [
   },
     category: "mold",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Kunafa-pistachio-Dubai-chocolate-image3d1.png",
-    image3d2: "/prodect/Kunafa-pistachio-Dubai-chocolate-image3d2.png",
+    image3d1: "/prodect/Kunafa-pistachio-Dubai-chocolate-image3d1.AVIF",
+    image3d2: "/prodect/Kunafa-pistachio-Dubai-chocolate-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -205,8 +205,8 @@ flavors: [
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Marshmallow-Biscuit-Bar-image3d1.png",
-    image3d2: "/prodect/Marshmallow-Biscuit-Bar-image3d2.png",
+    image3d1: "/prodect/Marshmallow-Biscuit-Bar-image3d1.AVIF",
+    image3d2: "/prodect/Marshmallow-Biscuit-Bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -235,8 +235,8 @@ flavors: [
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/peanut-butter-cookies-bar-image3d1.png",
-    image3d2: "/prodect/peanut-butter-cookies-bar-image3d2.png",
+    image3d1: "/prodect/peanut-butter-cookies-bar-image3d1.AVIF",
+    image3d2: "/prodect/peanut-butter-cookies-bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -265,8 +265,8 @@ flavors: [
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Pistachio&vanilla-cake-bar-image3d1.png",
-    image3d2: "/prodect/Pistachio&vanilla-cake-bar-image3d2.png",
+    image3d1: "/prodect/Pistachio&vanilla-cake-bar-image3d1.AVIF",
+    image3d2: "/prodect/Pistachio&vanilla-cake-bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -295,8 +295,8 @@ flavors: [
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Real-Donut-Chocolate-Bar-image3d1.png",
-    image3d2: "/prodect/Real-Donut-Chocolate-Bar-image3d2.png",
+    image3d1: "/prodect/Real-Donut-Chocolate-Bar-image3d1.AVIF",
+    image3d2: "/prodect/Real-Donut-Chocolate-Bar-image3d2.AVIF",
     gallery: [
       "/images/prodect/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -325,8 +325,8 @@ flavors: [
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Salted-caramel-Dark-chocolate-bar-image3d1.png",
-    image3d2: "/prodect/Salted-caramel-Dark-chocolate-bar-image3d2.png",
+    image3d1: "/prodect/Salted-caramel-Dark-chocolate-bar-image3d1.AVIF",
+    image3d2: "/prodect/Salted-caramel-Dark-chocolate-bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -354,8 +354,8 @@ ProductDetails: {
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Salted-caramel-pretzel-bar-image3d1.png",
-    image3d2: "/prodect/Salted-caramel-pretzel-bar-image3d2.png",
+    image3d1: "/prodect/Salted-caramel-pretzel-bar-image3d1.AVIF",
+    image3d2: "/prodect/Salted-caramel-pretzel-bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -382,8 +382,8 @@ ProductDetails: {
   },
     category: "mold",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Shay-belaban&biscuits-image3d1.png",
-    image3d2: "/prodect/Shay-belaban&biscuits-image3d2.png",
+    image3d1: "/prodect/Shay-belaban&biscuits-image3d1.AVIF",
+    image3d2: "/prodect/Shay-belaban&biscuits-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"
@@ -413,8 +413,8 @@ ProductDetails: {
   },
     category: "mold",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Strawberry-marshmallow-cake-image3d1.png",
-    image3d2: "/prodect/Strawberry-marshmallow-cake-image3d2.png",
+    image3d1: "/prodect/Strawberry-marshmallow-cake-image3d1.AVIF",
+    image3d2: "/prodect/Strawberry-marshmallow-cake-image3d2.AVIF",
     gallery: [
       "/images/prodect/mold-angle-1.jpg",
       "/images/prodect/mold-inside.jpg"
@@ -442,8 +442,8 @@ ProductDetails: {
   },
     category: "bar",
     image3dbasic: "/images/products/dark-gold-bar.jpg",
-    image3d1: "/prodect/Tiramisu-bar-image3d1.png",
-    image3d2: "/prodect/Tiramisu-bar-image3d2.png",
+    image3d1: "/prodect/Tiramisu-bar-image3d1.AVIF",
+    image3d2: "/prodect/Tiramisu-bar-image3d2.AVIF",
     gallery: [
       "/images/products/mold-angle-1.jpg",
       "/images/products/mold-inside.jpg"

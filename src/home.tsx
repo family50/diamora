@@ -490,7 +490,7 @@ useLayoutEffect(() => {
             preload="auto"
             className="hero-video-bg" // كلاس الفيديو الفعلي للتنسيق
         >
-            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="/hero-video.WebM" type="video/webm" />
         </video>
     </LuxeMedia>
 
@@ -592,7 +592,7 @@ useLayoutEffect(() => {
                     <div className="heritage-image-side">
                         <div className="heritage-img-wrapper">
                             <LuxeMedia variant="image" className="heritage-img">
-                                <img src="/Diamore-Heritage-Chocolate.png" alt="Heritage" />
+                                <img src="/Diamore-Heritage-Chocolate.AVIF" alt="Heritage" />
                             </LuxeMedia>
                         </div>
                     </div>
@@ -670,7 +670,7 @@ useLayoutEffect(() => {
                     <div className="chocolate-container">
                         <div className="chocolate-wrapper">
                             <LuxeMedia variant="image" className="floating-choc-wrapper">
-                                <img src="./broken-choc.png" alt="Choc" className="floating-choc" />
+                                <img src="./broken-choc.AVIF" alt="Choc" className="floating-choc" />
                             </LuxeMedia>
                             <div className="choc-shadow"></div>
                         </div>

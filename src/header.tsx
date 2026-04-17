@@ -11,7 +11,7 @@ export default function Header({ lang, toggleLanguage }: HeaderProps) {
     const location = useLocation(); // لمعرفة المسار الحالي
     const isHomePage = location.pathname === '/'; // هل نحن في الرئيسية؟
 
-    const [logoSrc, setLogoSrc] = useState(window.innerWidth < 850 ? './logo2.png' : './logo.png');
+    const [logoSrc, setLogoSrc] = useState(window.innerWidth < 850 ? './logo2.AVIF' : './logo.AVIF');
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 850);
 
@@ -36,7 +36,7 @@ export default function Header({ lang, toggleLanguage }: HeaderProps) {
         const handleResize = () => {
             const width = window.innerWidth;
             setIsMobile(width < 850);
-            setLogoSrc(width < 850 ? './logo2.png' : './logo.png');
+            setLogoSrc(width < 850 ? './logo2.AVIF' : './logo.AVIF');
         };
 
         window.addEventListener('scroll', handleScroll);
