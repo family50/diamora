@@ -89,3 +89,15 @@ html {
 .slider-track:active {
     cursor: none !important;
 }
+
+/* تغيير لون التحديد للموقع بالكامل */
+::selection {
+  background-color: var(--accent-gold); /* الخلفية ذهبية عند التحديد */
+  color: var(--primary-purple);         /* النص بلون البراند الغامق */
+}
+
+/* لدعم متصفحات فاييرفوكس القديمة */
+::-moz-selection {
+  background-color: var(--accent-gold);
+  color: var(--primary-purple);
+}
